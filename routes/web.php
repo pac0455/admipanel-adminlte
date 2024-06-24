@@ -25,3 +25,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('calendar', CalendarController::class);
 Route::resource('user', UserController::class);
 
+

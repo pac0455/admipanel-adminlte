@@ -12,11 +12,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate(10); // Paginando 10 usuarios por página
-        return view('user.index', compact('users'));
+        $paginate = $request->input('paginate',10); // Obtener el valor de paginate del request, o por defecto 10
+        $users = User::paginate($paginate); // Obtener usuarios paginados
+
+        return view('user.index', compact('users', 'paginate'));
     }
+
 
     /**
      * Show the form for creating a new resource.
