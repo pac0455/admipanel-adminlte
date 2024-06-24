@@ -1,0 +1,23 @@
+.nav-sidebar .nav-item>.nav-link{
+    color: white;
+}
+.nav-sidebar .nav-item>.nav-link:hover{
+    background-color: #EC8B24;
+    color: black;
+}
+.nav-sidebar .nav-item>.active{
+    background-color: #EC8B24;
+    color: black;
+}
+.main-sidebar{
+    background-color: #002883;
+}
+.custom_label_sidebar{
+    color: white;
+}
+.custom-blue{
+    background-color: #002883;
+}
+.custom-btn{
+    width: 100px;
+}
