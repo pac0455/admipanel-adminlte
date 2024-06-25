@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     /**
@@ -12,12 +12,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $paginate = $request->input('paginate',10); // Obtener el valor de paginate del request, o por defecto 10
-        $users = User::paginate($paginate); // Obtener usuarios paginados
 
-        return view('user.index', compact('users', 'paginate'));
+        $users = User::all();
+
+        return view('user.index', compact('users'));
     }
 
 
@@ -58,14 +58,14 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
-            'password_confirmation' => 'required', // Asegurarse de que la confirmación esté presente
+            'password_confirmation' => 'required',
         ], $messages);
 
         // Obtener los datos del formulario
         $dataUser = $request->only('name', 'email', 'password');
 
         // Encriptar la contraseña con bcrypt
-        $dataUser['password'] = bcrypt($dataUser['password']); // Utiliza bcrypt para las contraseñas
+        $dataUser['password'] = bcrypt($dataUser['password']);
 
         // Crear el usuario en la base de datos
         User::create([
@@ -98,7 +98,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('user.edit',[
+            'user' => User::find($id)
+        ]);
     }
 
     /**
@@ -110,7 +112,20 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         // Validar la entrada
+
+         $request->validate([
+            'password' => 'required|string|min:8',
+        ],[
+            'password.required' => 'La contraseña es obligatoria.',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
+        ]);
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect()->route('user.index');
     }
 
     /**
@@ -121,6 +136,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return redirect()->route('user.index');
     }
 }

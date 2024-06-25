@@ -11,11 +11,7 @@
 @section('content_header')
     <h1><span class="fas fa-fw fa-users"></span> Listado de usuarios</h1>
     <div class="my-1">
-
-        <button class="custom-blue text-white btn btn-lg custom-btn"><i class="fas fa fa-fw fa-trash"></i></button>
-        <a href="{{ route('user.create') }}" class="custom-blue text-white btn btn-lg custom-btn"><i
-                class="fas fa fa-fw fa-plus"></i></a>
-        <button class="custom-blue text-white btn btn-lg custom-btn"><i class="fas fa fa-fw fa-edit"></i></button>
+        <a href="{{ route('user.create') }}" class="custom-blue text-white btn btn-lg custom-btn"><i class="fas fa fa-fw fa-plus"></i></a>
     </div>
 @stop
 
@@ -30,6 +26,7 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,14 +49,20 @@
                             <td>{{ $name }}</td>
                             <td>{{ $apellidos }}</td>
                             <td>{{ $user->email }}</td>
+                            <td class="row justify-content-around">
+                                <form action="{{ route('user.destroy',['user' =>$user->id ])}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="custom-blue text-white btn btn-lg custom-btn"><i class="fas fa fa-fw fa-trash"></i></button>
+                                </form>
+                                <a class="custom-blue text-white btn btn-lg custom-btn" href="{{ route('user.edit',['user' =>$user->id ])}}"><i class="fas fa fa-fw fa-edit"></i></a>
+                            </td>
+
+
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            <div class="mt-3">
-                <!-- Mostrar siempre la paginación -->
-                {{ $users->appends(['paginate' => $paginate])->links() }}
-            </div>
         </div>
     </div>
 
@@ -73,10 +76,11 @@
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap4.js"></script>
     <script>
+
         let table = new DataTable('#table_users', {
             responsive: true,
             language: {
-                url: '//cdn.datatables.net/plug-ins/2.0.8/i18n/es-ES.json',
+                url: 'https://cdn.datatables.net/plug-ins/2.0.8/i18n/es-ES.json',
             }
         });
     </script>

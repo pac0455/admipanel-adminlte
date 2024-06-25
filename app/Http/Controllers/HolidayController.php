@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Holiday;
 use Illuminate\Http\Request;
 
-class CalendarController extends Controller
+class HolidayController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,9 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        return view('calendar.index');
+        return view('holidays.index',[
+            'holidays' => Holiday::all(),
+        ]);
     }
 
     /**
@@ -35,19 +37,7 @@ class CalendarController extends Controller
      */
     public function store(Request $request)
     {
-
-        list($dia, $mes, $anio)= explode('/', $request->fecha);
-        if(isset($request->recurrent)){
-            $request->merge(['recurrent' => 1]);
-        }
-        $fecha_formateada = [
-            'day' => $dia,
-            'month' => $mes,
-            'year' => $anio
-        ];
-        $evento =  array_merge($fecha_formateada, $request->except('_token', 'fecha'));
-        Holiday::create($evento);
-        return redirect()->route('calendar.index');
+        //
     }
 
     /**
@@ -58,7 +48,7 @@ class CalendarController extends Controller
      */
     public function show($id)
     {
-        //
+        return response()->json(Holiday::all());
     }
 
     /**
@@ -92,7 +82,6 @@ class CalendarController extends Controller
      */
     public function destroy($id)
     {
-        Holiday::destroy($id);
-        return redirect()->route('holidays.index');
+        //
     }
 }

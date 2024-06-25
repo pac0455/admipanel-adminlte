@@ -7,7 +7,7 @@
 @section('title', 'Prueba técnica')
 
 @section('content_header')
-    <h1><span class="fas fa-fw fa-users"></span> Crear usuarios</h1>
+    <h1><span class="fas fa-fw fa-users"></span> Editar usuarios</h1>
 @stop
 
 @section('content')
@@ -17,7 +17,7 @@
           @csrf
           <div class="form-group">
               <label for="name">Nombre</label>
-              <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" placeholder="Nombre">
+              <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"  value='{{$name}}' placeholder="Nombre">
               @error('name')
                   <div class="invalid-feedback">{{ $message }}</div>
               @enderror

@@ -21,3 +21,23 @@
 .custom-btn{
     width: 100px;
 }
+.input-group-prepend .input-group-text {
+    background-color: #f8f9fa;
+    border-color: #ced4da;
+}
+input[type="color"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    width: 100%;
+    height: 2.5rem;
+    cursor: pointer;
+    padding: 0;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+    border: none;
+}

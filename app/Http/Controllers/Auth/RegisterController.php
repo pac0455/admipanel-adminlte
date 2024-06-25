@@ -47,13 +47,28 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
+{
+    return Validator::make($data, [
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        'password' => ['required', 'string', 'min:8', 'confirmed'],
+    ], [
+        'name.required' => 'El campo nombre es obligatorio.',
+        'name.string' => 'El nombre debe ser una cadena de caracteres.',
+        'name.max' => 'El nombre no puede tener más de 255 caracteres.',
+
+        'email.required' => 'El campo correo electrónico es obligatorio.',
+        'email.string' => 'El correo electrónico debe ser una cadena de caracteres.',
+        'email.email' => 'El correo electrónico debe ser una dirección válida.',
+        'email.max' => 'El correo electrónico no puede tener más de 255 caracteres.',
+        'email.unique' => 'El correo electrónico ya está en uso.',
+
+        'password.required' => 'El campo contraseña es obligatorio.',
+        'password.string' => 'La contraseña debe ser una cadena de caracteres.',
+        'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
+        'password.confirmed' => 'La confirmación de la contraseña no coincide.',
+    ]);
+}
 
     /**
      * Create a new user instance after a valid registration.

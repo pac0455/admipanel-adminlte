@@ -297,7 +297,7 @@ return [
         // Navbar items:
         // Sidebar items:
         [
-            'header' => 'account_settings',
+            'header' => 'MENU',
             'classes' => 'custom_label_sidebar'
         ],
         [
@@ -306,10 +306,16 @@ return [
             'icon' => 'fas fa-fw fa-home',
         ],
         [
+            'text' => 'Dias festivos',
+            'route' => 'holidays.index',
+            'icon' => 'fas fa-fw fa-calendar',
+        ],
+        [
             'text' => 'Usuarios',
             'route' => 'user.index',
             'icon' => 'fas fa-fw fa-users',
-        ]
+        ],
+
     ],
 
     /*
