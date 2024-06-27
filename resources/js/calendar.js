@@ -86,4 +86,3 @@ $(document).ready(function () {
     })
 })
 
-import './eventListeners'
