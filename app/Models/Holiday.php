@@ -9,6 +9,6 @@ class Holiday extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'color', 'day', 'month', 'year', 'recurrent'
+        'name', 'color', 'day', 'month', 'year', 'recurrent', 'id_user'
     ];
 }

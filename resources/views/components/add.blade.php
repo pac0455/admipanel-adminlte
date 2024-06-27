@@ -4,7 +4,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Título del modal</h4>
+                    <h4 class="modal-title" id="myModalLabel">Añadir</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -25,7 +25,7 @@
                         <input id="fecha" type="hidden" name="fecha" value="" >
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close">Cerrar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_add">Cerrar</button>
                     <button type="submit" class="btn btn-primary" id="save">Guardar cambios</button>
                 </div>
             </div>

@@ -12,8 +12,10 @@
 @stop
 
 @section('content')
-    @include('components.modal')
-    <div id="calendar"></div>
+<div id="calendar"></div>
+@include('components.add')
+@include('components.info')
+@include('components.edit')
 @stop
 
 

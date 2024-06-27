@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('month');
             $table->integer('year')->nullable();
             $table->boolean('recurrent')->default(false);
+            $table->foreignId('id_user')->constrained('user')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

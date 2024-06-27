@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Holiday;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class CalendarController extends Controller
 {
@@ -36,8 +38,8 @@ class CalendarController extends Controller
     public function store(Request $request)
     {
 
-        list($dia, $mes, $anio)= explode('/', $request->fecha);
-        if(isset($request->recurrent)){
+        list($dia, $mes, $anio) = explode('/', $request->fecha);
+        if (isset($request->recurrent)) {
             $request->merge(['recurrent' => 1]);
         }
         $fecha_formateada = [
@@ -45,7 +47,11 @@ class CalendarController extends Controller
             'month' => $mes,
             'year' => $anio
         ];
-        $evento =  array_merge($fecha_formateada, $request->except('_token', 'fecha'));
+        $evento =  array_merge(
+            $fecha_formateada,
+            $request->except('_token', 'fecha'),
+            ['id_user' => Auth::user()->id]
+        );
         Holiday::create($evento);
         return redirect()->route('calendar.index');
     }
@@ -69,7 +75,7 @@ class CalendarController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd($id);
     }
 
     /**

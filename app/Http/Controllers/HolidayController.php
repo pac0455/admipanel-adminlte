@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Holiday;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HolidayController extends Controller
 {
@@ -48,7 +49,7 @@ class HolidayController extends Controller
      */
     public function show($id)
     {
-        return response()->json(Holiday::all());
+        return response()->json(Holiday::where('id_user', Auth::user()->id)->get());
     }
 
     /**

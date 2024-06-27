@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\CalendarController;
-use App\Http\Controllers\HolidayController;
-use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\HolidayController;
+use App\Http\Controllers\CalendarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +22,12 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-/* Route::middleware('auth:sanctum')->get('/user', function (Request $request) { */
-    /* return $request->user(); */
+Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('calendar', CalendarController::class);
     Route::resource('user', UserController::class);
     Route::resource('holidays', HolidayController::class);
-/* }); */
+});
 
 
 
