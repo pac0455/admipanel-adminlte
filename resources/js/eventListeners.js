@@ -35,7 +35,7 @@ $('#edit_save').click(function () {
             $('#info').modal('hide')
         },
         error(error) {
-            console.log(error); // Maneja los errores según necesites
+            console.log(error)
         }
     });
 });
