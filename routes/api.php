@@ -18,4 +18,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function (){
     Route::resource('/holidays', HolidayController::class);
+
 });

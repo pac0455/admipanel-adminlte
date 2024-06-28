@@ -72,7 +72,19 @@ class HolidayController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        list($dia,$mes,$anio)= explode('/',$request->fecha);
+        $holiday=Holiday::findOrFail($id);
+        $holiday->name= $request->name;
+        $holiday->color= $request->color;
+        $holiday->day= $dia;
+        $holiday->month= $mes;
+        $holiday->year= $anio;
+
+        $holiday->recurrent= $request->recurrent;
+        $holiday->save();
+
+
+        return response()->json('barbaro');
     }
 
     /**
@@ -83,6 +95,7 @@ class HolidayController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Holiday::destroy($id);
+        return response()->json(Holiday::all());
     }
 }

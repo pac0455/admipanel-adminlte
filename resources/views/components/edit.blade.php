@@ -15,17 +15,17 @@
                 </div>
                 <div class="form-group">
                     <label for="color">Color:</label>
-                    <input type="color" class="form-control" name="color" id="edit_color" value="">
+                    <input type="color" class="form-control" name="color_edit" id="color_edit" value="">
                 </div>
                 <div class="form-group">
                     <label for="color">Se repite:</label>
-                    <input type="checkbox" name="recurrent" id="edit_recurrent">
+                    <input type="checkbox" name="recurrent" id="recurrent_edit">
                 </div>
-                <input id="fecha" type="hidden" name="fecha" value="">
+                <input id="fecha_edit" type="hidden" name="fecha" value="">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_edit">Cerrar</button>
-                <button type="submit" class="btn btn-primary" id="edit_save">Guardar cambios</button>
+                <button type="submit" class="btn btn-primary" data-id id="edit_save">Guardar cambios</button>
             </div>
         </div>
     </div>
