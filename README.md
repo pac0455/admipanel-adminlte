@@ -18,7 +18,11 @@
 ## Vista previa
 
 La aplicación cargará directamente nuestra página de login
+
 <img src="./public/login.png"/>
+Nos redirige a nuestra pantalla de inicio donde se harán todas las consultas a la bd de datos 
+
+<img src="./public/inicio.png"/>
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
