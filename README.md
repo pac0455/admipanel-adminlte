@@ -22,10 +22,18 @@ La aplicación cargará directamente nuestra página de login
 <img src="./public/login.png"/>
 Nos redirige a nuestra pantalla de inicio donde se harán todas las consultas a la bd de datos
 <img src="./public/inicio.png"/>
-Nos redirige a nuestra pantalla de inicio donde se harán todas las consultas a la bd de datos
-<img src="./public/inicio.png"/>
 Crud de usarios, el campo login cual está autenticado
 <img src="./public/lista_usuarios.png"/>
+Si quieres buscar un día en específico para borrarlo se puede hacer tambien mediante la vista días festivos
+<img src="./public/dias_festivos.png"/>
+
+## Configuración
+Si se quiere añadir un modal se recomienda añadirlo en la carpeta components e importalo donde se vaya a usar
+<img src="./public/components.png"/>
+
+También se recomienda seguir la estructura de los archivos js
+<img src="./public/carpetas_js.png"/>
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
